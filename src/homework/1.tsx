@@ -8,8 +8,6 @@ interface Props {
   children: ReactNode;
   onContentEndVisible: () => void;
 }  
-
-
 export function Observer({ children, onContentEndVisible }: Props) {
   const endContentRef = useRef<HTMLDivElement>(null);
   // Вкажіть правильний тип для useRef зверніть увагу, в який DOM елемент ми його передаємо
