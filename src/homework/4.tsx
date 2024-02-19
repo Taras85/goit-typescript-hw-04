@@ -5,8 +5,12 @@ type MenuIds = "first" | "second" | "last";
 type Menu = { id: MenuIds; title: string };
 
 // Додати тип Menu Selected
-interface MenuSelected {
+type SelectedMenu = {
   id: MenuIds;
+};
+
+interface MenuSelected {
+  selectedMenu:SelectedMenu;
 }
 
 
@@ -66,9 +70,9 @@ function MenuComponent({ menus }: PropsMenu) {
   return (
     <>
       {menus.map((menu) => (
-        <div key={menu.id} onClick={() => onSelectedMenu({ id: menu.id })}>
+        <div key={menu.id} onClick={() => onSelectedMenu({selectedMenu: { id: menu.id }})}>
           {menu.title}{" "}
-          {selectedMenu?.id === menu.id ? "Selected" : "Not selected"}
+          {selectedMenu?.selectedMenu && selectedMenu.selectedMenu.id  === menu.id ? "Selected" : "Not selected"}
         </div>
       ))}
     </>
