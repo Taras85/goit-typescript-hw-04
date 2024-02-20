@@ -9,7 +9,7 @@ type SelectedMenu = {
 };
 
 interface MenuSelected {
-  selectedMenu: SelectedMenu | null;
+  selectedMenu: SelectedMenu;
 }
 
 const MenuSelectedContext = createContext<MenuSelected>({
@@ -31,7 +31,7 @@ type PropsProvider = {
 
 
 function MenuProvider({ children }: PropsProvider) {
-  const [selectedMenu, setSelectedMenu] = useState<SelectedMenu | null>(null);
+   const [selectedMenu, setSelectedMenu] = useState<SelectedMenu>({} as SelectedMenu);
 
   const menuContextAction = useMemo(
     () => ({
